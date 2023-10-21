@@ -45,38 +45,8 @@ function Footer(props) {
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
-              <a href="#" className="nav-link">
-                Proxy
-              </a>
-              <ul className="sub-nav-list">
-                <li className="sub-nav-item">
-                  <a href="#" className="sub-nav-link">
-                    About
-                  </a>
-                </li>
-                <li className="sub-nav-item">
-                  <a href="#" className="sub-nav-link">
-                    Shop
-                  </a>
-                </li>
-                <li className="sub-nav-item">
-                  <a href="#" className="sub-nav-link">
-                    Product
-                  </a>
-                </li>
-                <li className="sub-nav-item">
-                  <a href="#" className="sub-nav-link">
-                    Products Details
-                  </a>
-                </li>
-                <li className="sub-nav-item">
-                  <a href="#" className="sub-nav-link">
-                    Track Order
-                  </a>
-                </li>
-              </ul>
-            </li>
+          
+         
           </ul>
         </nav>
       </header>

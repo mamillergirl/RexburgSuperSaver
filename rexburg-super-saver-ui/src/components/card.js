@@ -1,11 +1,54 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
-function Card({title, content}){
-  const [cardData, setCardData] = useState('');
+function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
+  const [isSaved, setIsSaved] = useState(false);
+  const [items, setItems] = useState([]);
 
-  const saveToLocalStorage = (key) => {
-    // Store the key in local storage
-    localStorage.setItem('selectedKey', key);
+  useEffect(() => {
+    // Load saved items from local storage when the component mounts
+    const storedItems = JSON.parse(localStorage.getItem('items')) || [];
+    setItems(storedItems);
+
+    // Check if the item with the same id is already saved
+    const isItemSaved = storedItems.some((item) => item.id === id);
+    setIsSaved(isItemSaved);
+  }, [id]);
+
+  const handleButtonPress = () => {
+    isSaved ? removeFromLocalStorage() : saveToLocalStorage();
+  };
+
+  const saveToLocalStorage = () => {
+    const newItem = {
+      id,
+      name,
+      originalPrice,
+      salePrice,
+      img,
+      endDate,
+      storeImage
+    };
+
+    // Check if the item with the same id is already saved in local storage
+    const isDuplicate = items.some((item) => item.id === id);
+
+    if (!isDuplicate) {
+      // Update the state with the new item
+      setItems([...items, newItem]);
+
+      // Update the local storage array by adding the new item
+      localStorage.setItem('items', JSON.stringify([...items, newItem]));
+      setIsSaved(true);
+    }
+  };
+
+  const removeFromLocalStorage = () => {
+    // Remove the item with the specified key from local storage
+    localStorage.removeItem(id);
+
+    // Update the state to reflect the removal
+    setItems(items.filter((item) => item.id !== id));
+    setIsSaved(false);
   };
 
     return (
@@ -14,26 +57,22 @@ function Card({title, content}){
             <div className="div-44">
               <img alt="test"
                 loading="lazy"
-                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/21894050-790f-438a-b215-ae4ce563178e?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
-                className="img-8"
+                srcSet= {img}
+                 className="img-8"
               />
-              <div className="div-45">
-                <div className="div-46">Sale</div>
-                <div className="div-47">50%</div>
-              </div>
             </div>
             <div className="div-48">
-              <div className="div-49">{title}</div>
+              <div className="div-49">{name} </div>
               <div className="div-50">
                 <div className="div-51">
-                  <div className="div-52">$14.99</div>
-                  <div className="div-53">$20.99</div>
+                  <div className="div-52">${salePrice}</div>
+                  <div className="div-53">{`$${originalPrice}`}</div>
                 </div>
              
                 
               </div>
             </div>
-            <button onClick={saveToLocalStorage('key')}>
+            <button onClick={saveToLocalStorage}>
               <div className="circle">
             
            
@@ -46,7 +85,7 @@ function Card({title, content}){
             </button>
             <img alt="test"
               loading="lazy"
-              srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/77610fe3-ce14-4c85-8e1e-7b881fd8ebd8?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
+              src={storeImage}
               className="img-10"
             />
           </div>

@@ -1,6 +1,9 @@
 import Card from "./card"
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 
+import albertsonsCardData from '../albertsonsDeals.json';
+import broulimsCardData from '../broulimsDeals.json'
 
 const GridContainer = styled.div`
   display: grid;
@@ -11,8 +14,27 @@ const GridContainer = styled.div`
 
 
 function Section({title, number}){
-    const blankCards = Array(number).fill({ title: 'Blank Card', content: 'This is a blank card' });
-    return (
+  const [cardData, setCardData] = useState([]);
+  const [store, setStore] = useState(``)
+  const [limitedCardData, setLimitedCardData] = useState([]);
+
+  useEffect(() => {
+    if (title === "Albertsons") {
+      setCardData(albertsonsCardData);
+      setLimitedCardData(albertsonsCardData.slice(0, number));
+    } else if (title === "Broulims") {
+      setCardData(broulimsCardData);
+      setLimitedCardData(broulimsCardData.slice(0, number));
+    } else if (title === "Featured Deals") {
+      const albertsonsSlice = albertsonsCardData.slice(number, number * 2);
+      const broulimsSlice = broulimsCardData.slice(number, number * 2);
+      const data = albertsonsSlice.concat(broulimsSlice);
+      setLimitedCardData(data);
+    }
+  }, [title, number]);
+
+
+  return (
         <>
         <div className="div-38">
           <div className="div-39">{title}</div>
@@ -29,8 +51,8 @@ function Section({title, number}){
 
             <div className="div-164">
           <GridContainer>
-          {blankCards.map((card, index) => (
-          <Card key={index} title={card.title} content={card.content} />
+          {limitedCardData.map((card, index) => (
+          <Card id= {index}  name={card.name} originalPrice = {card.originalPrice} salePrice = {card.discountPrice} img={card.imageUrl} endDate={card.endDate} storeImage={card.storeImage}/>
         ))}
 
       </GridContainer>   

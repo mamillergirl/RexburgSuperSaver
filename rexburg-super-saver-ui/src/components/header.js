@@ -12,21 +12,8 @@ function Header(){
             className="img1"
           />
           </Link>
-          <div className="div4">
-            <div className="div5">
-              <img alt="test"
-                loading="lazy"
-                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/8d640ab8-bdd3-4927-9773-e08a5a92019f?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
-                className="img2"
-              />
-              <input className="div6" />
-            </div>
-            <div className="div7">
-              <button className="div8">Search</button>
-            </div>
-          </div>
           <div className="div9">
-            <Link>
+            <Link to="/saved"> 
             <img alt="test"
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
@@ -34,10 +21,7 @@ function Header(){
             />
             </Link>
             <div className="div10">
-              <div className="div11">
-                <div className="div12">Total Savings</div>
-                <div className="div13">$57.00</div>
-              </div>
+             
             </div>
           </div>
           <Link to="/login"> 

@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/home';
 import Register from './components/Register';
 import Login from './components/login';
-
-
-
+import Saved from './components/saved'
 
 
 
@@ -20,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/saved" element={<Saved/>} />
        
       </Routes>
     </Router>
