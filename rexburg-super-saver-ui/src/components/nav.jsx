@@ -8,8 +8,8 @@ function Nav(){
         <div className="div-19">
           <div className="div-20">
             <Link  to="/" className="div-21">Home</Link>
-            <Link className="div-22">Albertsons</Link>
-            <Link className="div-23">Broulims</Link>
+            <Link to ="/albertsons" className="div-22">Albertsons</Link>
+            <Link to = "/broulims" className="div-23">Broulims</Link>
             <Link className="div-24">Favorites</Link>
             <Link  className="div-25">About Us</Link>
           </div>
