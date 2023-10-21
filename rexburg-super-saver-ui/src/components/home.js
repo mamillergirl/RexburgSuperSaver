@@ -1,17 +1,36 @@
 "use client";
 import Header from "./header";
+import SmallHeader from "./smallHeader";
 import Card from "./card";
 import Section from "./homeSection";
 import Footer from "./footer";
+import React, { useState, useEffect } from 'react';
 
 
 
 function Home() {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 600);
+
+      useEffect(() => {
+        const handleResize = () => {
+          setIsSmallScreen(window.innerWidth <= 600);
+        };
+      
+        window.addEventListener('resize', handleResize);
+      
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+        
   return (
     <>
       <div className="div">
-        
-        <Header/>
+      <div>
+        {isSmallScreen ? <SmallHeader /> : <Header />}
+      </div>
+      
+        {/* <Header/> */}
         <div className="div-26">
           <img alt="test"
             loading="lazy"
@@ -602,7 +621,6 @@ function Home() {
           align-items: flex-start;
           align-self: start;
           display: flex;
-          margin-left: 275px;
           width: 437px;
           max-width: 100%;
           justify-content: space-between;

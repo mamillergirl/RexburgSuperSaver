@@ -268,7 +268,6 @@ function Nav(){
            align-items: flex-start;
            align-self: start;
            display: flex;
-           margin-left: 275px;
            width: 437px;
            max-width: 100%;
            justify-content: space-between;
