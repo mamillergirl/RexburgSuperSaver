@@ -934,7 +934,7 @@ function Home() {
           position: absolute;
           height: 100%;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
         }
         .div-45 {

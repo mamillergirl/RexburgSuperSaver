@@ -26,7 +26,7 @@ function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
       salePrice,
       img,
       endDate,
-      storeImage
+      storeImage,
     };
 
     // Check if the item with the same id is already saved in local storage
@@ -42,13 +42,14 @@ function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
     }
   };
 
-  const removeFromLocalStorage = () => {
-    // Remove the item with the specified key from local storage
-    localStorage.removeItem(id);
 
-    // Update the state to reflect the removal
-    setItems(items.filter((item) => item.id !== id));
-    setIsSaved(false);
+  const removeFromLocalStorage = (index) => {
+    const updatedCart = [...items];
+    updatedCart.splice(index, 1);
+    setItems(updatedCart);
+
+    // Update local storage when removing an item
+    localStorage.setItem('items', JSON.stringify(updatedCart));
   };
 
     return (
@@ -75,12 +76,8 @@ function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
             <button onClick={saveToLocalStorage}>
               <div className="circle">
             
+            {isSaved? <div className="icon">&#10003;</div> : <div className="icon">+</div> }
            
-            <img alt="test"
-                  loading="lazy"
-                  srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e34c78b8-d1cc-4d04-8e9a-6655b480b5f9?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
-                  className="img-9"
-                />
                  </div>
             </button>
             <img alt="test"
@@ -98,11 +95,15 @@ function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
            .circle {
             width: 30px; /* Adjust the width and height to change the size of the circle */
             height: 30px; /* Width and height should be the same for a perfect circle */
-            background-color: white;
+            background-color: #f2f2f2;
             border-radius: 50%; /* Use border-radius to make it a circle (50% of the width/height) */
             position: absolute;
             right: 1px;
             bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
             
 
           }
@@ -111,7 +112,14 @@ function Card({id, name, originalPrice, salePrice, img, endDate, storeImage}){
             position: absolute;
             right: 1px;
             bottom: 5px;
+            object-fit: contain;
+            
           }
+
+          .icon {
+            font-size: 25px;
+          }
+         
 
         `}</style>
           </>

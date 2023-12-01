@@ -605,7 +605,7 @@ function Albertsons() {
           position: absolute;
           height: 100%;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
         }
         .div-45 {
@@ -703,7 +703,7 @@ function Albertsons() {
         }
         .img-9 {
           aspect-ratio: 1;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
           width: 17px;
           fill: #000;

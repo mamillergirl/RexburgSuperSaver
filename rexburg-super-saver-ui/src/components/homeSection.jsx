@@ -14,24 +14,26 @@ const GridContainer = styled.div`
 
 
 function Section({title, number}){
+  const [itemsNumber, setItemsNumber] = useState(number)
   const [cardData, setCardData] = useState([]);
   const [store, setStore] = useState(``)
   const [limitedCardData, setLimitedCardData] = useState([]);
 
   useEffect(() => {
+   
     if (title === "Albertsons") {
       setCardData(albertsonsCardData);
-      setLimitedCardData(albertsonsCardData.slice(0, number));
+      setLimitedCardData(albertsonsCardData.slice(0, itemsNumber));
     } else if (title === "Broulims") {
       setCardData(broulimsCardData);
-      setLimitedCardData(broulimsCardData.slice(0, number));
+      setLimitedCardData(broulimsCardData.slice(0, itemsNumber));
     } else if (title === "Featured Deals") {
-      const albertsonsSlice = albertsonsCardData.slice(number, number * 2);
-      const broulimsSlice = broulimsCardData.slice(number, number * 2);
+      const albertsonsSlice = albertsonsCardData.slice(itemsNumber, itemsNumber * 2);
+      const broulimsSlice = broulimsCardData.slice(itemsNumber, itemsNumber * 2);
       const data = albertsonsSlice.concat(broulimsSlice);
       setLimitedCardData(data);
     }
-  }, [title, number]);
+  }, [title, itemsNumber]);
 
 
   return (
@@ -39,7 +41,11 @@ function Section({title, number}){
         <div className="div-38">
           <div className="div-39">{title}</div>
           <div className="div-40">
-            <div className="div-41">View All</div>
+            <button  onClick={() => { 
+              
+              setItemsNumber(itemsNumber + 5)
+              console.log(itemsNumber)
+            }}className="div-41">View More</button>
             <img alt="test"
               loading="lazy"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/6bca1cec-4b31-4c12-8d33-ad30626a0b38?apiKey=972b909c88a047a3bdbd2a879eeb0409&"

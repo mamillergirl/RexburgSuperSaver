@@ -1,7 +1,20 @@
 import Nav from "./nav";
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 function Header(){
+
+    const [cartLength, setCartLength] = useState(0);
+
+    useEffect(() => {
+      // Load saved items from local storage when the component mounts
+      let storedItems = JSON.parse(localStorage.getItem('items')) 
+      const length = storedItems.length;
+      console.log(length)
+      setCartLength(length)
+
+    }, []);
+
     return (
         <div className="div2">
         <div className="div3">
@@ -19,6 +32,7 @@ function Header(){
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/0d2be651-68e9-46f7-9257-2fafdfe12b7a?apiKey=972b909c88a047a3bdbd2a879eeb0409&"
               className="img3"
             />
+            {cartLength > 0? <sup className="superScript">{cartLength}</sup>: <sup></sup>}
             </Link>
             <div className="div10">
              
@@ -167,6 +181,8 @@ function Header(){
             overflow: hidden;
             align-self: start;
             max-width: 100%;
+            z-index: 1;
+            position: relative;
           }
           .div10 {
             align-items: center;
@@ -251,10 +267,36 @@ function Header(){
               text-wrap: initial;
             }
           }
-        `}
 
+          .div9{
+            position: relative;
+          }
+          .img3 {
+            position: relative; /* Add this line to make the parent container relative */
+            aspect-ratio: 0.89;
+            object-fit: cover;
+            object-position: center;
+            width: 31px;
+            fill: #000;
+            overflow: hidden;
+            align-self: start;
+            max-width: 100%;
+            z-index: 1;
+            position: relative;
+          }
         
-            
+          .superScript{
+            position: absolute;
+            top: 5%; /* Adjust this value to position the sup element above the image */
+            left: 15%; /* Adjust this value to position the sup element right of the image */
+            background-color:#f1984d;
+            border-radius: 5px;
+            color: black; /* Change this to the desired text color */
+            padding: 6px; /* Optional: Add padding for better visibility */
+            z-index: 2; /* Ensure it's above the image */
+          }
+        
+            `}
         </style>
       </div>
     )
