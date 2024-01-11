@@ -6,8 +6,7 @@ import Login from './components/login';
 import Saved from './components/saved'
 import Albertsons from './components/albertsons';
 import Broulims from './components/broulims';
-
-
+import './App.css'
 
 
 
