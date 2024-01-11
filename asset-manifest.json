@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/RexburgSuperSaver/static/css/main.202765b3.css",
+    "main.js": "/RexburgSuperSaver/static/js/main.8b1e3907.js",
+    "static/js/787.0c698911.chunk.js": "/RexburgSuperSaver/static/js/787.0c698911.chunk.js",
+    "index.html": "/RexburgSuperSaver/index.html",
+    "main.202765b3.css.map": "/RexburgSuperSaver/static/css/main.202765b3.css.map",
+    "main.8b1e3907.js.map": "/RexburgSuperSaver/static/js/main.8b1e3907.js.map",
+    "787.0c698911.chunk.js.map": "/RexburgSuperSaver/static/js/787.0c698911.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.202765b3.css",
+    "static/js/main.8b1e3907.js"
+  ]
+}
